@@ -293,7 +293,7 @@ input[type=range]:active::-webkit-slider-thumb{transform:scale(1.12)}
 .details{margin-top:1.6rem;display:grid;gap:1.3rem}
 .details dt{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-2)}
 .details dd{margin:.2rem 0 0}
-.details a{text-underline-offset:3px;text-decoration-color:var(--amber)}
+.details a{display:inline-flex;align-items:center;min-height:44px;text-underline-offset:3px;text-decoration-color:var(--amber)}
 .details a:hover{color:var(--amber)}
 form{display:grid;gap:1.15rem;background:var(--ink-850);border-radius:var(--radius);padding:clamp(1.4rem,3.5vw,2.5rem)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:1.15rem}
@@ -315,7 +315,7 @@ footer{background:var(--ink-950);padding:3rem 5% 2rem;border-top:1px solid var(-
 .footer-inner{max-width:1180px;margin-inline:auto;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
 .footer-inner img{height:52px;width:auto}
 .footer-links{display:flex;flex-wrap:wrap;gap:.25rem 1.6rem}
-.footer-links a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;color:var(--on-dark-2);font-size:.95rem;transition:color .2s ease}
+.footer-links a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;text-decoration:none;color:var(--on-dark-2);font-size:.95rem;transition:color .2s ease}
 .footer-links a:hover{color:var(--amber)}
 .footer-base{max-width:1180px;margin:1.5rem auto 0;padding-top:1.25rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem;font-size:.85rem;color:var(--on-dark-2)}
 
@@ -370,6 +370,9 @@ footer{background:var(--ink-950);padding:3rem 5% 2rem;border-top:1px solid var(-
   .footer-links{justify-content:center}
   .footer-base{justify-content:center;text-align:center}
   .count-row{grid-template-columns:1fr}
+  .portrait{width:88%}
+  .portrait img{aspect-ratio:4/5}
+  .legacy .btns .btn,.form-foot .btn{width:100%}
   .reel{aspect-ratio:5/4}
   .reel-copy{bottom:2.1rem;left:1.25rem;right:1.25rem}
   .play{top:34%;width:64px;right:1.25rem}
@@ -606,7 +609,7 @@ footer{background:var(--ink-950);padding:3rem 5% 2rem;border-top:1px solid var(-
       <button class="reel" type="button" id="reel-btn" aria-label="Play the animation reel, 1 minute 28 seconds">
         <span class="sprockets top" aria-hidden="true"></span>
         <span class="sprockets bot" aria-hidden="true"></span>
-        <span class="reel-copy"><small>The animation reel</small><strong>See the work behind the edit.</strong><span>Austin Wright, 3D Lead / Senior Animator · 1:28</span></span>
+        <span class="reel-copy"><small>The animation reel, 1:28</small><strong>See the work behind the edit.</strong><span>Austin Wright, 3D Lead / Senior Animator</span></span>
         <span class="play" aria-hidden="true"><svg><use href="#play"/></svg></span>
       </button>
       <p class="reel-alt"><a href="https://vimeo.com/878742215" target="_blank" rel="noopener">Prefer to watch on Vimeo?</a></p>
