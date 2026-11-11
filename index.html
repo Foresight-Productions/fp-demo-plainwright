@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en">
+<head>
+<!-- Design System
+  Style: Vintage Analog / Retro Film (ui-ux-pro-max starting bid), pushed away from its handwritten Caveat/Quicksand and film-grain reflex into a cinema screening room
+  Archetype: Editorial Split structure (split hero, stacked ruled rows, no card grids, one featured quote plus a smaller one).
+    Override note: the category default would be Warm Local or neon VHS retro. Impeccable's reflex check rejected both. Neon-VHS is the first-order trap for tape digitizing,
+    sepia-and-cream nostalgia is the second-order trap. The client's own brand is a white line-art logo on deep blue-black, and the product is light projected in the dark,
+    so the hero stays dark (override of the "no dark hero" Editorial rule) with one warm tungsten signal color and one paper-colored interlude for pricing and reviews.
+  Fonts: Fraunces (headings, gpt-taste shortlist) / Outfit (body and UI, gpt-taste shortlist, its thin geometric forms echo the logo wordmark)
+  Color strategy: Committed (deep ink blue carries most of the page, amber is the single signal, one warm paper interlude)
+  Palette (OKLCH): primary oklch(0.19 0.034 250) | accent oklch(0.80 0.15 72) | bg oklch(0.15 0.028 250) | text oklch(0.955 0.01 85)
+  Impeccable bans honored: no side-stripe borders, no gradient text, no default glassmorphism, no hero-metric template, no identical card grid, only transform and opacity animated, no em dashes
+  gpt-taste gates honored: AIDA flow | H1 held to 3 lines | no SECTION 01 style labels | no pills under H1, no floating badges, no raw stat block in the hero | button contrast checked
+  ui-ux-pro-max anti-patterns avoided: corporate template, generic layout, decorative infinite animation, emoji icons, z-index soup (scale: 10 / 20 / 40 / 100)
+  Content rule: every price, quote, credential and hour on this page comes from the client's own site. No invented reviews, counts or names.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plain Wright Media | VHS to Digital in Richland, WA</title>
+<meta name="description" content="Home movies converted to USB or DVD and edited by a professional animator. One-week delivery from a home studio in South Richland, Washington. From $12.99 a tape.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0d1420">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://foresight-productions.github.io/fp-demo-plainwright/">
+<meta property="og:title" content="Plain Wright Media | We tell your story. · Richland, WA">
+<meta property="og:description" content="VHS tapes, film reels, cassettes and slides converted to digital and edited by a professional animator. One-week delivery, handled locally in South Richland.">
+<meta property="og:image" content="https://foresight-productions.github.io/fp-demo-plainwright/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Plain Wright Media logo beside a close-up of a VHS cassette, with the line We tell your story.">
+<meta property="og:site_name" content="Plain Wright Media">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Plain Wright Media | We tell your story. · Richland, WA">
+<meta name="twitter:description" content="VHS tapes, film reels, cassettes and slides converted to digital and edited by a professional animator. One-week delivery, handled locally in South Richland.">
+<meta name="twitter:image" content="https://foresight-productions.github.io/fp-demo-plainwright/assets/og.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Outfit:wght@300..600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --ink-950: oklch(0.15 0.028 250);
+  --ink-900: oklch(0.19 0.034 250);
+  --ink-850: oklch(0.225 0.038 250);
+  --ink-800: oklch(0.265 0.04 250);
+  --ink-700: oklch(0.36 0.04 250);
+  --line: oklch(0.38 0.035 250 / 0.65);
+  --paper: oklch(0.955 0.013 85);
+  --paper-2: oklch(0.925 0.02 85);
+  --paper-line: oklch(0.8 0.025 80);
+  --on-dark: oklch(0.955 0.01 85);
+  --on-dark-2: oklch(0.79 0.025 250);
+  --on-paper: oklch(0.22 0.03 250);
+  --on-paper-2: oklch(0.42 0.03 250);
+  --amber: oklch(0.8 0.15 72);
+  --amber-hi: oklch(0.87 0.14 78);
+  --amber-ink: oklch(0.5 0.13 55);
+  --radius: 6px;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --serif: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --sans: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --z-section: 10; --z-menu: 20; --z-nav: 40; --z-skip: 100;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ink-950);color:var(--on-dark);font-family:var(--sans);font-size:1.0625rem;line-height:1.65;font-weight:400;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,p,ul,ol,figure,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:3px}
+.skip{position:absolute;left:1rem;top:-4rem;z-index:var(--z-skip);background:var(--amber);color:var(--ink-950);padding:.75rem 1rem;border-radius:var(--radius);font-weight:500;text-decoration:none;transition:transform .2s var(--ease)}
+.skip:focus{transform:translateY(5.25rem)}
+section[id]{scroll-margin-top:72px}
+.wrap{max-width:1180px;margin-inline:auto}
+.sec{padding:clamp(4.5rem,9vw,8rem) 5%}
+.eyebrow{font-size:.8rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+.on-paper .eyebrow{color:var(--amber-ink)}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(1.95rem,3.6vw,3.1rem);line-height:1.08;letter-spacing:-.018em;text-wrap:balance}
+h2 em,h1 em{font-style:italic;font-weight:300}
+h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.2vw,1.75rem);line-height:1.2;letter-spacing:-.01em}
+.lede{font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--on-dark-2);max-width:44ch}
+.muted{color:var(--on-dark-2)}
+.on-paper{background:var(--paper);color:var(--on-paper)}
+.on-paper .muted{color:var(--on-paper-2)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:48px;padding:0 1.6rem;border-radius:999px;font-weight:500;font-size:1rem;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:transform .2s var(--ease),background-color .2s ease,border-color .2s ease,color .2s ease;touch-action:manipulation}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0) scale(.98)}
+.btn-amber{background:var(--amber);color:var(--ink-950)}
+.btn-amber:hover{background:var(--amber-hi)}
+.btn-ghost{border-color:oklch(0.955 0.01 85 / .38);color:var(--on-dark)}
+.btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
+.btn-ink{background:var(--ink-950);color:var(--on-dark)}
+.btn-ink:hover{background:var(--ink-800)}
+.btn-sm{min-height:44px;padding:0 1.25rem;font-size:.95rem}
+
+/* nav, scoped to #nav only */
+#nav{position:fixed;top:0;left:0;right:0;z-index:var(--z-nav);height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:oklch(0.15 0.028 250 / .94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:box-shadow .25s ease}
+#nav.scrolled{box-shadow:0 6px 28px oklch(0.08 0.02 250 / .55)}
+.nav-logo{flex-shrink:0;display:flex;align-items:center;min-height:44px}
+.nav-logo img{height:44px;width:auto}
+.nav-links{display:flex;align-items:center;gap:2.1rem;flex-shrink:0}
+.nav-links a:not(.btn){text-decoration:none;font-size:.95rem;color:var(--on-dark-2);padding:.6rem 0;position:relative;transition:color .2s ease}
+.nav-links a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:.25rem;height:1px;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nav-links a:not(.btn):hover{color:var(--on-dark)}
+.nav-links a:not(.btn):hover::after{transform:scaleX(1)}
+.nav-toggle{display:none;flex-shrink:0;width:48px;height:48px;border:0;background:none;cursor:pointer;position:relative;z-index:var(--z-nav)}
+.nav-toggle span{position:absolute;left:12px;right:12px;height:2px;background:var(--on-dark);border-radius:2px;transition:transform .3s var(--ease)}
+.nav-toggle span:nth-child(1){top:19px}
+.nav-toggle span:nth-child(2){top:27px}
+.nav-toggle[aria-expanded="true"] span:nth-child(1){transform:translateY(4px) rotate(45deg)}
+.nav-toggle[aria-expanded="true"] span:nth-child(2){transform:translateY(-4px) rotate(-45deg)}
+
+/* hero */
+.hero{min-height:100svh;display:grid;grid-template-columns:minmax(0,1.32fr) minmax(0,1fr);background:var(--ink-950);position:relative;overflow:hidden}
+.hero-copy{padding:clamp(7rem,12vw,9rem) 4% 2.5rem 6vw;display:flex;flex-direction:column;justify-content:center;gap:1.6rem}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,4.25vw,4rem);line-height:1.04;letter-spacing:-.025em;max-width:clamp(20rem,70vw,60rem)}
+.hero h1 em{display:block;color:var(--amber)}
+.hero-btns{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:.4rem}
+.hero-meta{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;margin-top:clamp(1.5rem,4vw,3rem);border-top:1px solid var(--line);padding-top:1.25rem}
+.hero-meta li{padding-right:2rem;margin-right:2rem;border-right:1px solid var(--line)}
+.hero-meta li:last-child{border-right:0;margin-right:0;padding-right:0}
+.hero-meta span{display:block;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-2)}
+.hero-meta strong{display:block;font-family:var(--serif);font-weight:400;font-size:1.25rem;line-height:1.3}
+.hero-media{position:relative;min-height:100%;overflow:hidden}
+.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:44% 42%;animation:settle 2.4s var(--ease) both}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink-950) 0%,oklch(0.15 0.028 250 / 0) 38%),linear-gradient(0deg,var(--ink-950) 0%,oklch(0.15 0.028 250 / 0) 22%)}
+@keyframes settle{from{transform:scale(1.07)}to{transform:scale(1)}}
+
+/* proof strip */
+.proof{background:var(--ink-900);border-block:1px solid var(--line);padding:0 5%}
+.proof ul{max-width:1180px;margin-inline:auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.proof li{padding:1.75rem 1.5rem 1.75rem 0;margin-right:1.5rem;border-right:1px solid var(--line)}
+.proof li:last-child{border-right:0;margin-right:0}
+.proof strong{display:block;font-family:var(--serif);font-weight:400;font-size:1.2rem;line-height:1.25}
+.proof span{display:block;font-size:.92rem;color:var(--on-dark-2);margin-top:.2rem}
+
+/* process */
+.process .wrap{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(2.5rem,7vw,7rem);align-items:start}
+.process-head{position:sticky;top:7rem}
+.process-head h2{margin:.9rem 0 1.25rem}
+.steps{counter-reset:step}
+.steps li{counter-increment:step;display:grid;grid-template-columns:5.5rem 1fr;gap:1.25rem;padding:2rem 0;border-top:1px solid var(--line)}
+.steps li:last-child{border-bottom:1px solid var(--line)}
+.steps li::before{content:counter(step);font-family:var(--serif);font-style:italic;font-weight:300;font-size:4.6rem;line-height:.9;color:var(--amber)}
+.steps h3{margin-bottom:.5rem}
+.steps p{color:var(--on-dark-2);max-width:48ch}
+
+/* pricing */
+.pricing-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:2rem;align-items:end;margin-bottom:clamp(2rem,4vw,3.25rem)}
+.pricing-head h2{margin-top:.9rem}
+.pricing-head p{max-width:42ch;justify-self:end}
+.tiers{display:grid;gap:1rem}
+.tier{display:grid;grid-template-columns:14rem 11rem minmax(0,1fr);gap:clamp(1.25rem,3vw,2.5rem);align-items:center;background:var(--ink-900);color:var(--on-dark);border-radius:var(--radius);padding:1.4rem clamp(1.25rem,3vw,2.25rem) 1.4rem 1.4rem}
+.jcard{--card:var(--paper);aspect-ratio:5/3;border-radius:4px;padding:.8rem 1rem;display:flex;align-items:flex-end;color:var(--ink-950);background-color:var(--card);background-image:repeating-linear-gradient(to bottom,transparent 0 1.6rem,oklch(0.22 0.03 250 / .2) 1.6rem calc(1.6rem + 1px));box-shadow:inset 0 0 0 4px var(--card),inset 0 0 0 5px oklch(0.22 0.03 250 / .25)}
+.jcard h3{font-style:italic;font-weight:400;font-size:1.65rem;line-height:1}
+.tier:nth-child(2) .jcard{--card:oklch(0.9 0.07 80)}
+.tier:nth-child(3) .jcard{--card:var(--amber)}
+.amt{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(2.3rem,3.6vw,3rem);line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums lining-nums}
+.per{display:block;font-size:.92rem;color:var(--on-dark-2);margin-top:.3rem}
+.tier-list{display:grid;gap:.55rem}
+.tier-list li{display:grid;grid-template-columns:1.25rem 1fr;gap:.7rem;align-items:start;font-size:1rem;line-height:1.5}
+.tier-list svg{width:1.25rem;height:1.25rem;color:var(--amber);margin-top:.2rem}
+.tier-list .first{color:var(--on-dark-2)}
+
+.calc{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(1.5rem,4vw,3.5rem);margin-top:clamp(2.5rem,5vw,4.5rem);align-items:start}
+.panel{background:var(--paper-2);border:1px solid var(--paper-line);border-radius:var(--radius);padding:clamp(1.4rem,3vw,2.4rem)}
+.panel h3{margin-bottom:1.4rem}
+.field-label{display:block;font-weight:500;font-size:.95rem;margin-bottom:.4rem}
+.count-row{display:grid;grid-template-columns:auto 1fr;gap:1.1rem;align-items:center}
+.stepper{display:inline-grid;grid-template-columns:48px 76px 48px;border:1px solid var(--paper-line);border-radius:var(--radius);background:var(--paper);overflow:hidden}
+.stepper button{height:48px;border:0;background:none;font-size:1.4rem;cursor:pointer;color:var(--on-paper);transition:background-color .15s ease;touch-action:manipulation}
+.stepper button:hover{background:var(--paper-2)}
+.stepper input{width:100%;height:48px;border:0;border-inline:1px solid var(--paper-line);text-align:center;background:transparent;font-family:var(--serif);font-size:1.35rem;-moz-appearance:textfield;appearance:textfield;color:var(--on-paper)}
+.stepper input::-webkit-outer-spin-button,.stepper input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;cursor:pointer;margin:0}
+input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(to right,var(--amber-ink) var(--fill,11%),oklch(0.78 0.025 80) var(--fill,11%))}
+input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:linear-gradient(to right,var(--amber-ink) var(--fill,11%),oklch(0.78 0.025 80) var(--fill,11%))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:var(--ink-900);border:3px solid var(--amber);margin-top:-12px;transition:transform .2s var(--ease)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--ink-900);border:3px solid var(--amber)}
+input[type=range]:active::-webkit-slider-thumb{transform:scale(1.12)}
+.shelf{display:flex;flex-wrap:wrap;align-items:flex-end;gap:3px;min-height:58px;margin:1.4rem 0 .4rem;padding-bottom:6px;border-bottom:2px solid var(--on-paper)}
+.shelf i{display:block;width:9px;height:var(--h);border-radius:2px 2px 0 0;background:var(--ink-800);position:relative;transform-origin:bottom;animation:rise .45s var(--ease) both;animation-delay:var(--d,0ms)}
+.shelf i::after{content:"";position:absolute;left:1px;right:1px;top:30%;height:35%;background:var(--paper);opacity:.85;border-radius:1px}
+.shelf i:nth-child(3n)::after{background:var(--amber)}
+.shelf-note{font-size:.88rem;color:var(--on-paper-2);min-height:1.4em}
+@keyframes rise{from{transform:scaleY(.2);opacity:0}to{transform:scaleY(1);opacity:1}}
+.results{display:grid;gap:1.15rem;margin-top:1.6rem}
+.res-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.res-name{font-weight:500}
+.res-tot{font-family:var(--serif);font-size:1.7rem;line-height:1;font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.01em}
+.res-per{font-size:.86rem;color:var(--on-paper-2);font-variant-numeric:tabular-nums}
+.bar{height:6px;border-radius:3px;background:oklch(0.82 0.02 80);margin-top:.45rem;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ink-800);border-radius:3px;transform-origin:left;transform:scaleX(var(--p,.3));transition:transform .5s var(--ease)}
+.res:nth-child(2) .bar i{background:oklch(0.62 0.12 65)}
+.res:nth-child(3) .bar i{background:var(--amber-ink)}
+.fine{font-size:.86rem;color:var(--on-paper-2);margin-top:1.4rem;max-width:60ch}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.ledger h3{margin-bottom:1.2rem}
+.ledger dl{margin:0}
+.ledger .row{display:flex;align-items:baseline;gap:.75rem;padding:.95rem 0;border-top:1px solid var(--paper-line)}
+.ledger .row:last-of-type{border-bottom:1px solid var(--paper-line)}
+.ledger dt{font-weight:500}
+.ledger .dots{flex:1;border-bottom:2px dotted oklch(0.7 0.03 80);transform:translateY(-.3rem)}
+.ledger dd{margin:0;font-family:var(--serif);font-size:1.35rem;font-variant-numeric:tabular-nums lining-nums}
+.bulk{margin-top:1.75rem;display:flex;flex-wrap:wrap;gap:.9rem;align-items:center}
+.bulk p{font-family:var(--serif);font-style:italic;font-size:1.25rem}
+
+/* beyond the tapes */
+.beyond{background:var(--ink-950)}
+.beyond-head{max-width:46rem;margin-bottom:clamp(2.25rem,5vw,4rem)}
+.beyond-head h2{margin-top:.9rem}
+.beyond-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(1.5rem,3vw,2.5rem);align-items:stretch}
+.legacy{background:var(--ink-850);border-radius:var(--radius);padding:clamp(1.75rem,4vw,3.25rem);display:flex;flex-direction:column;gap:1.25rem}
+.legacy h3{font-size:clamp(1.7rem,2.8vw,2.3rem);line-height:1.12}
+.legacy p{color:var(--on-dark-2);max-width:54ch}
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:.5rem;border-top:1px solid var(--line);padding-top:1.5rem}
+.paths h4{font-family:var(--serif);font-weight:400;font-size:1.15rem;margin:0 0 .4rem;color:var(--on-dark)}
+.paths p{font-size:.98rem}
+.legacy .sign{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.25rem,2vw,1.55rem);line-height:1.35;color:var(--on-dark);margin-top:.5rem;max-width:34ch}
+.legacy .btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:auto;padding-top:.75rem}
+.editing{padding:clamp(1.75rem,4vw,3rem) 0 0;display:flex;flex-direction:column;gap:1.25rem}
+.editing p{color:var(--on-dark-2)}
+.occasions li{padding:.8rem 0;border-top:1px solid var(--line);font-family:var(--serif);font-size:1.2rem}
+.occasions li:last-child{border-bottom:1px solid var(--line)}
+
+/* about */
+.about{background:var(--ink-850)}
+.about-grid{display:grid;grid-template-columns:minmax(0,4.6fr) minmax(0,7fr);gap:clamp(2rem,6vw,6rem);align-items:center}
+.portrait{position:relative;max-width:30rem}
+.portrait img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--radius);position:relative;z-index:2}
+.portrait::before{content:"";position:absolute;inset:0;border:1px solid var(--amber);border-radius:var(--radius);transform:translate(14px,14px);z-index:1}
+.about h2{margin:.9rem 0 1.3rem}
+.about p+p{margin-top:1rem}
+.about .body p{color:var(--on-dark-2);max-width:54ch}
+.about .body .sig{font-family:var(--serif);font-style:italic;color:var(--on-dark);font-size:1.15rem}
+.facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;margin-top:2rem;border-top:1px solid var(--line);padding-top:1.25rem}
+.facts li{padding-right:2rem;margin-right:2rem;border-right:1px solid var(--line)}
+.facts li:last-child{border:0;margin:0;padding:0}
+.facts b{display:block;font-family:var(--serif);font-weight:400;font-size:2.25rem;line-height:1;font-variant-numeric:tabular-nums lining-nums}
+.facts li>span{display:block;font-size:.88rem;color:var(--on-dark-2);margin-top:.35rem}
+.reel-wrap{margin-top:clamp(3rem,6vw,5rem)}
+.reel{position:relative;display:block;width:100%;aspect-ratio:16/9;border:0;padding:0;cursor:pointer;background:var(--ink-950);border-radius:var(--radius);overflow:hidden;text-align:left;color:var(--on-dark)}
+.reel::before{content:"";position:absolute;inset:0;background:radial-gradient(55% 75% at 72% 38%,oklch(0.5 0.11 70 / .4),transparent 70%),linear-gradient(135deg,var(--ink-900),var(--ink-950))}
+.sprockets{position:absolute;left:0;right:0;height:22px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='22'%3E%3Crect x='6' y='6' width='14' height='10' rx='2.5' fill='%23e8dcc4' fill-opacity='.8'/%3E%3C/svg%3E") repeat-x;opacity:.85;z-index:2}
+.sprockets.top{top:6px}.sprockets.bot{bottom:6px}
+.reel-copy{position:absolute;left:clamp(1.25rem,4vw,3.5rem);bottom:clamp(2.25rem,5vw,4rem);z-index:3;max-width:34rem}
+.reel-copy small{display:block;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:.5rem}
+.reel-copy strong{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.1}
+.reel-copy span{display:block;color:var(--on-dark-2);font-size:.95rem;margin-top:.5rem}
+.play{position:absolute;right:clamp(1.5rem,7vw,6rem);top:50%;z-index:3;width:clamp(72px,9vw,104px);aspect-ratio:1;border-radius:50%;border:2px solid var(--amber);display:grid;place-items:center;color:var(--amber);transform:translateY(-50%);transition:transform .35s var(--ease),background-color .25s ease,color .25s ease}
+.play svg{width:34%;margin-left:6%}
+.reel:hover .play,.reel:focus-visible .play{transform:translateY(-50%) scale(1.08);background:var(--amber);color:var(--ink-950)}
+.reel-alt{margin-top:.5rem;font-size:.92rem}
+.reel-alt a{display:inline-flex;align-items:center;min-height:44px;color:var(--on-dark-2);text-underline-offset:3px;text-decoration-color:var(--amber)}
+.reel-alt a:hover{color:var(--amber)}
+.reel-wrap iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:var(--radius);background:var(--ink-950)}
+
+/* reviews */
+.reviews-head{max-width:40rem;margin-bottom:clamp(2rem,5vw,3.5rem)}
+.reviews-head h2{margin-top:.9rem}
+.quotes{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(2rem,5vw,5rem);align-items:start}
+.quote svg{width:3.25rem;height:auto;color:var(--amber-ink);margin-bottom:1rem}
+.quote blockquote{font-family:var(--serif);font-weight:400;line-height:1.38;letter-spacing:-.005em}
+.quote.big blockquote{font-size:clamp(1.3rem,2vw,1.6rem)}
+.quote.small{padding-top:clamp(0rem,6vw,5rem)}
+.quote.small blockquote{font-size:clamp(1.15rem,1.6vw,1.3rem);font-style:italic;font-weight:300}
+.quote figcaption{margin-top:1.4rem;font-size:.95rem;display:flex;flex-wrap:wrap;gap:.2rem .75rem;align-items:baseline;color:var(--on-paper-2)}
+.quote figcaption b{font-weight:500;color:var(--on-paper);font-size:1.05rem}
+.note-src{margin-top:clamp(2rem,4vw,3rem);font-size:.88rem;color:var(--on-paper-2);border-top:1px solid var(--paper-line);padding-top:1rem}
+
+/* cta band + contact */
+.cta{background:var(--amber);color:var(--ink-950);padding:clamp(3.5rem,7vw,5.5rem) 5%}
+.cta .wrap{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;align-items:center}
+.cta h2{font-size:clamp(1.9rem,3.4vw,2.9rem)}
+.cta p{margin-top:.7rem;color:oklch(0.28 0.04 250);font-weight:500}
+.contact{background:var(--ink-900)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(2.5rem,6vw,6rem)}
+.contact h2{margin:.9rem 0 1.4rem}
+.phone{display:inline-block;font-family:var(--serif);font-size:clamp(2.3rem,4.4vw,3.6rem);line-height:1;letter-spacing:-.02em;text-decoration:none;font-variant-numeric:tabular-nums lining-nums;padding:.4rem 0;transition:color .2s ease}
+.phone:hover{color:var(--amber)}
+.details{margin-top:1.6rem;display:grid;gap:1.3rem}
+.details dt{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--on-dark-2)}
+.details dd{margin:.2rem 0 0}
+.details a{text-underline-offset:3px;text-decoration-color:var(--amber)}
+.details a:hover{color:var(--amber)}
+form{display:grid;gap:1.15rem;background:var(--ink-850);border-radius:var(--radius);padding:clamp(1.4rem,3.5vw,2.5rem)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:1.15rem}
+.f label{display:block;font-weight:500;font-size:.95rem;margin-bottom:.4rem}
+.f label small{font-weight:400;color:var(--on-dark-2)}
+.f input,.f select,.f textarea{width:100%;min-height:48px;padding:.7rem .9rem;border-radius:var(--radius);border:1px solid oklch(0.5 0.035 250);background:var(--ink-950);transition:border-color .2s ease,box-shadow .2s ease}
+.f textarea{min-height:130px;resize:vertical}
+.f input:hover,.f select:hover,.f textarea:hover{border-color:oklch(0.65 0.04 250)}
+.f input:focus,.f select:focus,.f textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px oklch(0.8 0.15 72 / .25)}
+.f .err{display:none;color:oklch(0.8 0.13 25);font-size:.88rem;margin-top:.35rem}
+.f.bad .err{display:block}
+.f.bad input,.f.bad textarea{border-color:oklch(0.7 0.16 25)}
+.form-foot{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+.form-note{font-size:.9rem;color:var(--on-dark-2);max-width:36ch}
+#form-status{font-size:.95rem;color:var(--amber);min-height:1.4em}
+
+/* footer: not a nav element */
+footer{background:var(--ink-950);padding:3rem 5% 2rem;border-top:1px solid var(--line)}
+.footer-inner{max-width:1180px;margin-inline:auto;display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:center}
+.footer-inner img{height:52px;width:auto}
+.footer-links{display:flex;flex-wrap:wrap;gap:.25rem 1.6rem}
+.footer-links a{display:inline-flex;align-items:center;min-height:44px;text-decoration:none;color:var(--on-dark-2);font-size:.95rem;transition:color .2s ease}
+.footer-links a:hover{color:var(--amber)}
+.footer-base{max-width:1180px;margin:1.5rem auto 0;padding-top:1.25rem;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem 2rem;font-size:.85rem;color:var(--on-dark-2)}
+
+/* reveal */
+.js .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0ms)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* responsive */
+@media (max-width:1100px){
+  .tier{grid-template-columns:11rem 9rem minmax(0,1fr)}
+  .beyond-grid{grid-template-columns:1fr}
+  .editing{padding-top:0}
+  .pricing-head{grid-template-columns:1fr}
+  .pricing-head p{justify-self:start}
+}
+@media (max-width:860px){
+  .calc,.contact-grid,.quotes,.about-grid,.process .wrap{grid-template-columns:1fr}
+  .process-head{position:static}
+  .quote.small{padding-top:0}
+  .portrait{max-width:24rem}
+}
+@media (max-width:900px){
+  #nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--ink-950)}
+  .nav-toggle{display:block}
+  .nav-links{position:fixed;inset:0;z-index:var(--z-menu);flex-direction:column;justify-content:center;gap:1.1rem;background:var(--ink-950);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .3s ease,transform .35s var(--ease),visibility 0s linear .35s}
+  .nav-links.open{opacity:1;visibility:visible;transform:none;transition:opacity .3s ease,transform .35s var(--ease)}
+  .nav-links a:not(.btn){font-family:var(--serif);font-size:1.9rem;color:var(--on-dark);padding:.5rem 1rem}
+  .nav-links .btn{margin-top:1rem}
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-media{order:-1;min-height:0;height:min(44svh,380px);margin-top:68px}
+  .hero-media::after{background:linear-gradient(0deg,var(--ink-950) 0%,oklch(0.15 0.028 250 / 0) 50%)}
+  .hero-copy{padding:1.5rem 5% 3.5rem;gap:1.35rem}
+  .proof ul{grid-template-columns:1fr 1fr}
+  .proof li{border-right:0;margin-right:0;padding:1.4rem 1rem 1.4rem 0;border-bottom:1px solid var(--line)}
+  .proof li:nth-last-child(-n+2){border-bottom:0}
+  .tier{grid-template-columns:1fr 1fr;align-items:center}
+  .tier-list{grid-column:1/-1}
+  .cta .wrap{grid-template-columns:1fr}
+}
+@media (max-width:768px){
+  .hero h1{font-size:clamp(1.7rem,7.8vw,2.4rem)}
+  .hero-btns .btn{width:100%;max-width:320px}
+  .hero-meta{grid-template-columns:1fr;gap:.9rem;border-top:0;padding-top:0}
+  .hero-meta li{border-right:0;margin:0;padding:.85rem 0 0;border-top:1px solid var(--line)}
+  .steps li{grid-template-columns:3.6rem 1fr;gap:.8rem}
+  .steps li::before{font-size:3.4rem}
+  .paths,.two{grid-template-columns:1fr}
+  .facts{grid-template-columns:repeat(3,auto)}
+  .facts li{padding-right:1rem;margin-right:1rem}
+  .facts b{font-size:1.8rem}
+  .footer-inner{flex-direction:column;text-align:center}
+  .footer-links{justify-content:center}
+  .footer-base{justify-content:center;text-align:center}
+  .count-row{grid-template-columns:1fr}
+  .reel{aspect-ratio:5/4}
+  .reel-copy{bottom:2.1rem;left:1.25rem;right:1.25rem}
+  .play{top:34%;width:64px;right:1.25rem}
+  .cta .btn{width:100%}
+}
+@media (max-width:420px){
+  .tier{grid-template-columns:1fr;gap:1rem}
+  .jcard{aspect-ratio:auto;min-height:5.6rem;padding:.6rem .9rem}
+  .proof ul{grid-template-columns:1fr}
+  .proof li:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
+  .proof li:last-child{border-bottom:0}
+  .facts{grid-template-columns:1fr;gap:1rem}
+  .facts li{border:0;margin:0;padding:0}
+  .stepper{width:100%;grid-template-columns:52px 1fr 52px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body id="top">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="ck" viewBox="0 0 20 20"><path d="M4 10.5l4 4 8-9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="qm" viewBox="0 0 52 40"><path fill="currentColor" d="M0 40V24C0 10 8 2 22 0v7C14 9 11 14 11 20h11v20H0zm30 0V24C30 10 38 2 52 0v7c-8 2-11 7-11 13h11v20H30z"/></symbol>
+  <symbol id="play" viewBox="0 0 20 24"><path fill="currentColor" d="M0 0l20 12L0 24z"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to main content</a>
+
+<header id="nav">
+  <a class="nav-logo" href="#top" aria-label="Plain Wright Media, back to top"><img src="assets/logo.png" alt="Plain Wright Media" width="151" height="44"></a>
+  <nav class="nav-links" id="nav-links" aria-label="Primary">
+    <a href="#pricing">Pricing</a>
+    <a href="#beyond">Legacy and editing</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a class="btn btn-amber btn-sm" href="#contact">Book a drop-off</a>
+  </nav>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span><span></span></button>
+</header>
+
+<main id="main">
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <p class="eyebrow">Home movie digitizing, South Richland, WA</p>
+    <h1 id="hero-title">We do more than digitize your memories. <em>We tell your story.</em></h1>
+    <p class="lede">Your tapes converted and edited by a professional animator, then back in your hands in one week. Handled locally, never shipped.</p>
+    <div class="hero-btns">
+      <a class="btn btn-amber" href="#contact">Book a drop-off</a>
+      <a class="btn btn-ghost" href="#pricing">See pricing</a>
+    </div>
+    <ul class="hero-meta" aria-label="At a glance">
+      <li><span>From</span><strong>$12.99 a tape</strong></li>
+      <li><span>Turnaround</span><strong>One week</strong></li>
+      <li><span>Delivered on</span><strong>USB or DVD</strong></li>
+    </ul>
+  </div>
+  <div class="hero-media">
+    <img src="assets/cassette.jpg" width="1280" height="720" fetchpriority="high" alt="Close-up of a VHS cassette with its tape reel lit by warm light">
+  </div>
+</section>
+
+<section class="proof" aria-label="Why people bring tapes here">
+  <ul>
+    <li class="reveal"><strong>One-week delivery</strong><span>Fast, local turnaround.</span></li>
+    <li class="reveal" style="--d:70ms"><strong>Handled locally</strong><span>No shipping, nothing lost in the mail.</span></li>
+    <li class="reveal" style="--d:140ms"><strong>Blank gaps cut out</strong><span>Seamless viewing from Standard up.</span></li>
+    <li class="reveal" style="--d:210ms"><strong>1 to 1 conversion</strong><span>Delivered on USB or DVD.</span></li>
+  </ul>
+</section>
+
+<section class="sec process" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="process-head reveal">
+      <p class="eyebrow">How it works</p>
+      <h2 id="how-title">Hand us a shoebox. <em>Get the whole story back.</em></h2>
+      <p class="lede">No mailing labels, no waiting on a warehouse. You meet the person who handles your tapes.</p>
+    </div>
+    <ol class="steps">
+      <li class="reveal">
+        <div><h3>Book a time</h3><p>Drop-offs are by appointment, Tuesday to Friday, 9 to 5, at our home office a few minutes up the hill behind Yokes in South Richland.</p></div>
+      </li>
+      <li class="reveal" style="--d:90ms">
+        <div><h3>We digitize and edit</h3><p>Every tape is converted 1 to 1 to USB or DVD. Step up a tier and the blank in-between footage is cut, chapters and custom titles are added, and the audio is cleaned up.</p></div>
+      </li>
+      <li class="reveal" style="--d:180ms">
+        <div><h3>Back in one week</h3><p>Because everything is handled locally, your tapes never ride in a truck. Choose Premium and we can also set up a private YouTube channel to share with family and friends.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec on-paper" id="pricing" aria-labelledby="pricing-title">
+  <div class="wrap">
+    <div class="pricing-head">
+      <div class="reveal">
+        <p class="eyebrow">Pricing</p>
+        <h2 id="pricing-title">Three ways to <em>bring a tape home.</em></h2>
+      </div>
+      <p class="muted reveal" style="--d:90ms">Prices are per tape. Every tier starts with a 1 to 1 conversion, and each step up adds the editing that makes old footage a pleasure to watch.</p>
+    </div>
+
+    <div class="tiers">
+      <article class="tier reveal">
+        <div class="jcard"><h3>Basic</h3></div>
+        <div><span class="amt">$12.99</span><span class="per">a tape</span></div>
+        <ul class="tier-list">
+          <li class="first"><svg aria-hidden="true"><use href="#ck"/></svg><span>First tape is $35, each additional tape is only $12.99.</span></li>
+          <li><svg aria-hidden="true"><use href="#ck"/></svg><span>1 to 1 conversion to USB or DVD.</span></li>
+        </ul>
+      </article>
+      <article class="tier reveal" style="--d:80ms">
+        <div class="jcard"><h3>Standard</h3></div>
+        <div><span class="amt">$19.99</span><span class="per">a tape</span></div>
+        <ul class="tier-list">
+          <li class="first"><svg aria-hidden="true"><use href="#ck"/></svg><span>Everything in Basic.</span></li>
+          <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Basic video editing: removal of blank in-between footage.</span></li>
+          <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Chapter breaks and custom title names.</span></li>
+        </ul>
+      </article>
+      <article class="tier reveal" style="--d:160ms">
+        <div class="jcard"><h3>Premium</h3></div>
+        <div><span class="amt">$34.99</span><span class="per">a tape</span></div>
+        <ul class="tier-list">
+          <li class="first"><svg aria-hidden="true"><use href="#ck"/></svg><span>Everything in Basic and Standard.</span></li>
+          <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Audio enhancement and noise reduction.</span></li>
+          <li><svg aria-hidden="true"><use href="#ck"/></svg><span>Advanced video editing: upscaling and enhancement.</span></li>
+          <li><svg aria-hidden="true"><use href="#ck"/></svg><span>A custom private YouTube channel to share with family and friends.</span></li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="calc">
+      <div class="panel reveal">
+        <h3>What would your shelf cost?</h3>
+        <label class="field-label" for="tapes">How many tapes do you have?</label>
+        <div class="count-row">
+          <div class="stepper">
+            <button type="button" id="minus" aria-label="One fewer tape">&minus;</button>
+            <input id="tapes" type="number" inputmode="numeric" min="1" max="500" value="12">
+            <button type="button" id="plus" aria-label="One more tape">+</button>
+          </div>
+          <input id="range" type="range" min="1" max="100" value="12" aria-label="Number of tapes, slider">
+        </div>
+        <div class="shelf" id="shelf" aria-hidden="true"></div>
+        <p class="shelf-note" id="shelf-note"></p>
+        <div class="results" id="results">
+          <div class="res"><div class="res-top"><span class="res-name">Basic</span><span class="res-tot" id="t-basic">$0</span></div><div class="bar"><i id="b-basic"></i></div><span class="res-per" id="p-basic"></span></div>
+          <div class="res"><div class="res-top"><span class="res-name">Standard</span><span class="res-tot" id="t-standard">$0</span></div><div class="bar"><i id="b-standard"></i></div><span class="res-per" id="p-standard"></span></div>
+          <div class="res"><div class="res-top"><span class="res-name">Premium</span><span class="res-tot" id="t-premium">$0</span></div><div class="bar"><i id="b-premium"></i></div><span class="res-per" id="p-premium"></span></div>
+        </div>
+        <p class="sr-only" role="status" id="calc-status"></p>
+        <p class="fine">An estimate from the posted prices. Your exact quote is confirmed when you book, and bulk discounts are available.</p>
+      </div>
+
+      <div class="ledger reveal" style="--d:100ms">
+        <h3>Other formats</h3>
+        <dl>
+          <div class="row"><dt>Video reels</dt><span class="dots" aria-hidden="true"></span><dd>$34.95</dd></div>
+          <div class="row"><dt>Reel to reel</dt><span class="dots" aria-hidden="true"></span><dd>$19.95</dd></div>
+          <div class="row"><dt>Cassette tapes</dt><span class="dots" aria-hidden="true"></span><dd>$19.95</dd></div>
+          <div class="row"><dt>Slides</dt><span class="dots" aria-hidden="true"></span><dd>$0.55</dd></div>
+          <div class="row"><dt>Photos</dt><span class="dots" aria-hidden="true"></span><dd>$0.35</dd></div>
+        </dl>
+        <div class="bulk">
+          <p>Ask us about bulk discounts.</p>
+          <a class="btn btn-ink btn-sm" href="#contact">Request a quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec beyond" id="beyond" aria-labelledby="beyond-title">
+  <div class="wrap">
+    <div class="beyond-head reveal">
+      <p class="eyebrow">Beyond the tapes</p>
+      <h2 id="beyond-title">Some stories are too <em>meaningful</em> to leave untold.</h2>
+    </div>
+    <div class="beyond-grid">
+      <article class="legacy reveal">
+        <p class="eyebrow">Legacy interviews</p>
+        <h3>Turn their story into a legacy.</h3>
+        <p>Every family has stories worth remembering. Our Legacy Interview questionnaires give you thoughtful, story-driven questions to sit down with a loved one and capture their memories, wisdom, experiences and life lessons yourself.</p>
+        <div class="paths">
+          <div><h4>Do it yourself</h4><p>Buy the PDF guide, record the conversation and create a keepsake your family can treasure for generations.</p></div>
+          <div><h4>Want it cinematic?</h4><p>Hire us to turn your family's interview into a beautifully produced, Netflix-style legacy documentary.</p></div>
+        </div>
+        <p class="sign">Preserve their voice. Honor their journey. Keep their story alive.</p>
+        <div class="btns">
+          <a class="btn btn-amber" href="https://plainwrightmedia.gumroad.com/" target="_blank" rel="noopener">Get the interview guides</a>
+          <a class="btn btn-ghost" href="#contact">Ask about a documentary</a>
+        </div>
+      </article>
+      <article class="editing reveal" style="--d:100ms">
+        <p class="eyebrow">Video editing</p>
+        <h3>Professional editing for the moments that matter.</h3>
+        <p>The same craft that goes into studio animation goes into your edit. We work on YouTube channels, weddings, funerals, graduations, celebrations and personalized slide shows.</p>
+        <ul class="occasions">
+          <li>YouTube channels</li>
+          <li>Weddings</li>
+          <li>Funerals and celebrations of life</li>
+          <li>Graduations</li>
+          <li>Personalized slide shows</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec about" id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <div class="about-grid">
+      <figure class="portrait reveal">
+        <img src="assets/austin.jpg" width="601" height="801" loading="lazy" alt="Austin Wright, owner of Plain Wright Media, smiling at a cafe table">
+      </figure>
+      <div class="body reveal" style="--d:100ms">
+        <p class="eyebrow">Meet Austin Wright</p>
+        <h2 id="about-title">Studio-grade editing, <em>at a fraction of the price.</em></h2>
+        <p>I've spent the last 13 years working for clients such as Disney, DreamWorks and Netflix as a 3D animator. I've also been the video editor for a number of popular YouTube channels.</p>
+        <p>With that knowledge and skill set, I'm proud to come alongside new clients to digitize and edit their most treasured memories. Unlike big box stores, which can be costly and unreliable, we handle your memories with care, locally, to avoid shipping issues.</p>
+        <p class="sig">Austin Wright, Plain Wright Media</p>
+        <ul class="facts" aria-label="Quick facts">
+          <li><b><span data-count="13">13</span></b><span>years in animation</span></li>
+          <li><b><span data-count="1">1</span> wk</b><span>delivery time</span></li>
+          <li><b>$<span data-count="12.99" data-dec="2">12.99</span></b><span>a tape, to start</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="reel-wrap reveal" id="reel-wrap">
+      <button class="reel" type="button" id="reel-btn" aria-label="Play the animation reel, 1 minute 28 seconds">
+        <span class="sprockets top" aria-hidden="true"></span>
+        <span class="sprockets bot" aria-hidden="true"></span>
+        <span class="reel-copy"><small>The animation reel</small><strong>See the work behind the edit.</strong><span>Austin Wright, 3D Lead / Senior Animator · 1:28</span></span>
+        <span class="play" aria-hidden="true"><svg><use href="#play"/></svg></span>
+      </button>
+      <p class="reel-alt"><a href="https://vimeo.com/878742215" target="_blank" rel="noopener">Prefer to watch on Vimeo?</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec on-paper" id="reviews" aria-labelledby="reviews-title">
+  <div class="wrap">
+    <div class="reviews-head reveal">
+      <p class="eyebrow">Reviews</p>
+      <h2 id="reviews-title">In their <em>own words.</em></h2>
+    </div>
+    <div class="quotes">
+      <figure class="quote big reveal">
+        <svg viewBox="0 0 52 40" aria-hidden="true"><use href="#qm"/></svg>
+        <blockquote>The service was prompt and the quality was excellent. They were able to eliminate the blank spaces between the videos, something that other conversion services did not do. The price was less expensive than the big box stores and that was a bonus since we had so many VHS tapes. They have also done some VHS-C tapes for us and they will soon convert a bunch of our family’s old Super 8 tapes.</blockquote>
+        <figcaption><b>Dave D</b><span>VHS conversion customer</span></figcaption>
+      </figure>
+      <figure class="quote small reveal" style="--d:110ms">
+        <svg viewBox="0 0 52 40" aria-hidden="true"><use href="#qm"/></svg>
+        <blockquote>I recently started using Plain Wright Media for editing my YouTube Channel, and my productivity has increased dramatically! It is so nice to know I can shoot something and have a finished product within hours.</blockquote>
+        <figcaption><b>Cory F</b><span>YouTube editing client</span></figcaption>
+      </figure>
+    </div>
+    <p class="note-src reveal">Reviews are shown as posted on the Plain Wright Media website.</p>
+  </div>
+</section>
+
+<section class="cta" aria-labelledby="cta-title">
+  <div class="wrap">
+    <div>
+      <h2 id="cta-title">Proudly based in South Richland. Bring in the shoebox.</h2>
+      <p>By appointment, Tuesday to Friday, 9 to 5.</p>
+    </div>
+    <a class="btn btn-ink" href="#contact">Book a drop-off</a>
+  </div>
+</section>
+
+<section class="sec contact" id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <p class="eyebrow">Get in touch</p>
+      <h2 id="contact-title">Let's look at <em>what you have.</em></h2>
+      <a class="phone" href="tel:+15092128304">509-212-8304</a>
+      <dl class="details">
+        <div><dt>Email</dt><dd><a href="mailto:plainwrightmedia@gmail.com">plainwrightmedia@gmail.com</a></dd></div>
+        <div><dt>Hours</dt><dd>Tuesday to Friday, 9 AM to 5 PM<br>By appointment only</dd></div>
+        <div><dt>Where</dt><dd>Our home office is a few minutes up the hill behind Yokes in South Richland.</dd></div>
+      </dl>
+    </div>
+
+    <form id="contact-form" class="reveal" style="--d:100ms" novalidate>
+      <div class="two">
+        <div class="f" id="f-name"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required aria-describedby="e-name"><p class="err" id="e-name">Please tell us your name.</p></div>
+        <div class="f" id="f-email"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required aria-describedby="e-email"><p class="err" id="e-email">Please enter an email we can reply to.</p></div>
+      </div>
+      <div class="f"><label for="bring">What are you bringing?</label>
+        <select id="bring" name="bring">
+          <option>VHS or VHS-C tapes</option>
+          <option>Video reels</option>
+          <option>Reel to reel</option>
+          <option>Cassette tapes</option>
+          <option>Slides or photos</option>
+          <option>A video editing project</option>
+          <option>A legacy interview</option>
+          <option>Not sure yet</option>
+        </select></div>
+      <div class="two">
+        <div class="f"><label for="count">About how many? <small>(optional)</small></label><input id="count" name="count" type="number" inputmode="numeric" min="1"></div>
+        <div class="f"><label for="phone">Phone <small>(optional)</small></label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"></div>
+      </div>
+      <div class="f"><label for="msg">Anything we should know?</label><textarea id="msg" name="msg"></textarea></div>
+      <div class="form-foot">
+        <button class="btn btn-amber" type="submit">Send message</button>
+        <p class="form-note">This opens your email app with the message filled in.</p>
+      </div>
+      <p id="form-status" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <img src="assets/logo.png" alt="Plain Wright Media" width="178" height="52" loading="lazy">
+    <div class="footer-links">
+      <a href="#pricing">Pricing</a>
+      <a href="#beyond">Legacy and editing</a>
+      <a href="#about">About</a>
+      <a href="#reviews">Reviews</a>
+      <a href="https://www.facebook.com/people/Plain-Wright-Media/61555281484418/" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.linkedin.com/in/austin-wright-5a697b95/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://plainwrightmedia.gumroad.com/" target="_blank" rel="noopener">Interview guides</a>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span>&copy; 2026 Plain Wright Media. South Richland, Washington.</span>
+    <span>Design preview by Foresight Productions</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var doc=document, root=doc.documentElement;
+  root.classList.add('js');
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* nav */
+  var nav=doc.getElementById('nav'), toggle=doc.querySelector('.nav-toggle'), links=doc.getElementById('nav-links');
+  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>12)}
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+  function setMenu(open){
+    links.classList.toggle('open',open);
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    toggle.setAttribute('aria-label',open?'Close menu':'Open menu');
+    doc.body.style.overflow=open?'hidden':'';
+  }
+  toggle.addEventListener('click',function(){setMenu(!links.classList.contains('open'))});
+  links.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false)});
+  doc.addEventListener('keydown',function(e){if(e.key==='Escape'&&links.classList.contains('open')){setMenu(false);toggle.focus()}});
+  window.addEventListener('resize',function(){if(window.innerWidth>900&&links.classList.contains('open'))setMenu(false)});
+
+  /* reveal on scroll, with a safety net so content can never stay hidden */
+  var rev=[].slice.call(doc.querySelectorAll('.reveal'));
+  function showAll(){rev.forEach(function(el){el.classList.add('in')})}
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    rev.forEach(function(el){io.observe(el)});
+    setTimeout(showAll,6000);
+  } else showAll();
+
+  /* count-up */
+  function countUp(el){
+    var end=parseFloat(el.getAttribute('data-count')), dec=parseInt(el.getAttribute('data-dec')||'0',10), t0=null, dur=1300;
+    function fmt(v){return v.toFixed(dec)}
+    if(reduce){el.textContent=fmt(end);return}
+    var done=false;
+    function finish(){if(!done){done=true;el.textContent=fmt(end)}}
+    setTimeout(finish,dur+400);
+    function step(ts){
+      if(done)return; if(t0===null)t0=ts;
+      var p=Math.min((ts-t0)/dur,1), e=1-Math.pow(1-p,4);
+      el.textContent=fmt(end*e);
+      if(p<1)requestAnimationFrame(step);else finish();
+    }
+    requestAnimationFrame(step);
+  }
+  var counts=[].slice.call(doc.querySelectorAll('[data-count]'));
+  if('IntersectionObserver' in window){
+    var co=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){countUp(en.target);co.unobserve(en.target)}})},{threshold:.6});
+    counts.forEach(function(el){co.observe(el)});
+  }
+
+  /* calculator */
+  var tapes=doc.getElementById('tapes'), range=doc.getElementById('range'), shelf=doc.getElementById('shelf'), note=doc.getElementById('shelf-note'), statusEl=doc.getElementById('calc-status');
+  var heights=[44,38,50,41,47,36,52,40,45,49,37,43,51,39,46,42];
+  function money(c){return (c/100).toLocaleString('en-US',{style:'currency',currency:'USD'})}
+  var statusTimer;
+  function calc(n){
+    n=Math.max(1,Math.min(500,Math.round(n)||1));
+    var basic=3500+(n-1)*1299, std=1999*n, prem=3499*n, max=Math.max(basic,std,prem);
+    [['basic',basic],['standard',std],['premium',prem]].forEach(function(r){
+      doc.getElementById('t-'+r[0]).textContent=money(r[1]);
+      doc.getElementById('b-'+r[0]).style.setProperty('--p',(r[1]/max).toFixed(3));
+      doc.getElementById('p-'+r[0]).textContent=money(Math.round(r[1]/n))+' per tape on average';
+    });
+    var show=Math.min(n,48); shelf.textContent='';
+    var frag=doc.createDocumentFragment();
+    for(var i=0;i<show;i++){var s=doc.createElement('i');s.style.setProperty('--h',heights[i%heights.length]+'px');s.style.setProperty('--d',Math.min(i*14,420)+'ms');frag.appendChild(s)}
+    shelf.appendChild(frag);
+    note.textContent=n>48?'Showing 48 of your '+n+' tapes.':(n===1?'One tape.':n+' tapes on the shelf.');
+    clearTimeout(statusTimer);
+    statusTimer=setTimeout(function(){statusEl.textContent=n+' tapes: Basic '+money(basic)+', Standard '+money(std)+', Premium '+money(prem)+'.'},500);
+    range.style.setProperty('--fill',Math.min(n,100)+'%');
+  }
+  function setN(n,from){
+    n=Math.max(1,Math.min(500,Math.round(n)||1));
+    if(from!=='num')tapes.value=n;
+    if(from!=='range')range.value=Math.min(n,100);
+    calc(n);
+  }
+  tapes.addEventListener('input',function(){if(tapes.value!=='')setN(parseFloat(tapes.value),'num')});
+  tapes.addEventListener('blur',function(){setN(parseFloat(tapes.value)||1)});
+  range.addEventListener('input',function(){setN(parseFloat(range.value),'range')});
+  doc.getElementById('minus').addEventListener('click',function(){setN((parseFloat(tapes.value)||1)-1)});
+  doc.getElementById('plus').addEventListener('click',function(){setN((parseFloat(tapes.value)||1)+1)});
+  setN(12);
+
+  /* reel facade: the Vimeo player loads only on click */
+  var reelBtn=doc.getElementById('reel-btn');
+  reelBtn.addEventListener('click',function(){
+    var f=doc.createElement('iframe');
+    f.src='https://player.vimeo.com/video/878742215?autoplay=1&title=0&byline=0&portrait=0&dnt=1';
+    f.title='Plain Wright Media animation reel by Austin Wright';
+    f.allow='autoplay; fullscreen; picture-in-picture';
+    f.setAttribute('allowfullscreen','');
+    reelBtn.replaceWith(f);
+  });
+
+  /* form: builds a mailto, no backend */
+  var form=doc.getElementById('contact-form'), st=doc.getElementById('form-status');
+  function bad(id,on){doc.getElementById(id).classList.toggle('bad',on)}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=form.name.value.trim(), email=form.email.value.trim();
+    var okN=name.length>0, okE=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    bad('f-name',!okN); bad('f-email',!okE);
+    if(!okN){form.name.focus();return}
+    if(!okE){form.email.focus();return}
+    var lines=['Name: '+name,'Email: '+email];
+    if(form.phone.value.trim())lines.push('Phone: '+form.phone.value.trim());
+    lines.push('Bringing: '+form.bring.value);
+    if(form.count.value)lines.push('About how many: '+form.count.value);
+    if(form.msg.value.trim())lines.push('','Message:',form.msg.value.trim());
+    var href='mailto:plainwrightmedia@gmail.com?subject='+encodeURIComponent('Drop-off request from '+name)+'&body='+encodeURIComponent(lines.join('\n'));
+    st.textContent='Opening your email app. If nothing opens, write to plainwrightmedia@gmail.com or call 509-212-8304.';
+    window.location.href=href;
+  });
+  ['name','email'].forEach(function(id){doc.getElementById(id).addEventListener('input',function(){bad('f-'+id,false)})});
+})();
+</script>
+</body>
+</html>
